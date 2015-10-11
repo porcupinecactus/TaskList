@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="todoApp">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="todo.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="todo.css">
+</head>
+<body>
+	
+	<div ng-controller=" todoListCtrl as todoList" class="container">
+		<h2>Task List</h2>[<a href="" ng-click="todoList.archive()">archive</a>]
+		[<a href="" ng-click="todoList.clear()">clear</a>]
+		[<a href="" ng-click="todoList.undo()">undo</a>]
+		<ul class="unstyled">
+			<li ng-repeat=" todo in todoList.todos">
+				<input type="checkbox" ng-model="todo.done">
+				<span class="done-{{todo.done}}">{{todo.text}}</span>
+			</li>
+		</ul>
+		<form ng-submit="todoList.addTodo()">
+			<input type="text" ng-model="todoList.todos.text">
+			<input class="btn-primary" type="submit" value="add">
+		</form>
+	</div>
+
+
+</body>
